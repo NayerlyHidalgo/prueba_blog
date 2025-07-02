@@ -1,66 +1,99 @@
-import React from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Productos from "./pages/Productos";
+import { Carousel } from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-function App() {
+// Página principal (Home)
+function Home() {
   return (
-    <div className="min-h-screen flex flex-col bg-gray-100">
-      {/* Header */}
-      <header className="bg-white shadow">
-        <div className="container mx-auto px-4 py-6 flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-gray-800">Mi Blog</h1>
-          <nav>
-            <a href="#" className="text-gray-600 hover:text-blue-500 px-3">Inicio</a>
-            <a href="#" className="text-gray-600 hover:text-blue-500 px-3">Sobre mí</a>
-            <a href="#" className="text-gray-600 hover:text-blue-500 px-3">Contacto</a>
-          </nav>
-        </div>
-      </header>
-
-      {/* Perfil */}
-      <section className="bg-white shadow mt-4 rounded-lg mx-auto max-w-2xl w-full">
-        <div className="flex items-center p-6">
-          <img
-            src="https://randomuser.me/api/portraits/men/32.jpg"
-            alt="Perfil"
-            className="w-20 h-20 rounded-full border-4 border-blue-500"
-          />
-          <div className="ml-6">
-            <h2 className="text-2xl font-bold text-gray-800">Francisco Higuera</h2>
-            <p className="text-gray-600">Desarrollador Frontend | React | Tailwind CSS</p>
-            <div className="mt-2">
-              <a
-                href="#"
-                className="text-blue-500 hover:underline text-sm"
-              >
-                Ver perfil completo
-              </a>
-            </div>
-          </div>
+    <main className="flex-1 flex flex-col items-center py-8 bg-black w-full">
+      {/* Título */}
+      <section className="w-full flex justify-center mt-8 mb-6">
+        <div className="bg-gradient-to-r from-purple-900 via-fuchsia-800 to-rose-900 rounded-lg px-8 py-12 text-center shadow max-w-6xl w-full">
+          <h1 className="text-6xl font-light mb-4 leading-tight text-white drop-shadow">
+            Bienvenido a la Gestión de Inventario
+          </h1>
+          <p className="text-2xl text-fuchsia-200">
+            Consulta, registra y realiza cálculos sobre los productos del inventario.
+          </p>
         </div>
       </section>
 
-      {/* Main */}
-      <main className="flex-1 container mx-auto px-4 py-8">
-        {/* Posts */}
-        <section className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* Ejemplo de post */}
-          <article className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-xl font-semibold mb-2">Título del Post</h2>
-            <p className="text-gray-600 mb-4">Descripción breve del post...</p>
-            <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-              Leer más
-            </button>
-          </article>
-          {/* Puedes duplicar el bloque <article> para más posts */}
-        </section>
-      </main>
+      {/* Carrusel */}
+      <section className="w-full max-w-4xl mb-6">
+        <Carousel
+          showThumbs={false}
+          showStatus={false}
+          infiniteLoop
+          autoPlay
+          interval={4000}
+          className="rounded overflow-hidden"
+        >
+          <div>
+            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Walrus 1" />
+          </div>
+          <div>
+            <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80" alt="Walrus 2" />
+          </div>
+          <div>
+            <img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=800&q=80" alt="Walrus 3" />
+          </div>
+        </Carousel>
+      </section>
 
-      {/* Footer */}
-      <footer className="bg-white shadow mt-8">
-        <div className="container mx-auto px-4 py-4 text-center text-gray-500">
-          © 2025 Mi Blog. Todos los derechos reservados.
+      {/* Tarjetas */}
+      <section className="w-full max-w-4xl grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <div className="border border-fuchsia-900 rounded p-6 bg-gradient-to-br from-purple-900 via-fuchsia-800 to-rose-900">
+          <h2 className="font-semibold text-lg mb-2 text-white">Listado de Productos</h2>
+          <p className="text-fuchsia-200 text-sm mb-2">Consulta el inventario actual.</p>
         </div>
-      </footer>
-    </div>
+        <div className="border border-fuchsia-900 rounded p-6 bg-gradient-to-br from-purple-900 via-fuchsia-800 to-rose-900">
+          <h2 className="font-semibold text-lg mb-2 text-white">Registrar Producto</h2>
+          <p className="text-fuchsia-200 text-sm mb-2">Agrega nuevos productos.</p>
+        </div>
+        <div className="border border-fuchsia-900 rounded p-6 bg-gradient-to-br from-purple-900 via-fuchsia-800 to-rose-900">
+          <h2 className="font-semibold text-lg mb-2 text-white">Cálculos de Inventario</h2>
+          <p className="text-fuchsia-200 text-sm mb-2">Calcula valores comerciales básicos.</p>
+        </div>
+      </section>
+
+      {/* Mensaje informativo */}
+      <div className="w-full max-w-4xl">
+        <div className="bg-fuchsia-900 text-fuchsia-100 rounded p-3 text-sm">
+          Mantenga el stock de los productos actualizado.
+        </div>
+      </div>
+    </main>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <div className="min-h-screen flex flex-col bg-black">
+        {/* Header */}
+        <header className="w-full bg-gradient-to-r from-purple-900 via-fuchsia-800 to-rose-900 text-white py-2 px-4 flex items-center">
+          <span className="font-semibold text-lg mr-8">Gestión de Productos</span>
+          <nav className="flex space-x-4 text-sm">
+            <Link to="/" className="hover:underline">Home</Link>
+            <Link to="/productos" className="hover:underline">Productos</Link>
+            <a href="#" className="hover:underline">Nuevo Producto</a>
+            <a href="#" className="hover:underline">Cálculos</a>
+            <a href="#" className="hover:underline">Información</a>
+          </nav>
+        </header>
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/productos" element={<Productos />} />
+        </Routes>
+
+        {/* Footer */}
+        <footer className="w-full bg-gradient-to-r from-purple-900 via-fuchsia-800 to-rose-900 text-fuchsia-100 text-center py-4 mt-8">
+          © 2025 - Sistema de Productos - Taller Académico
+        </footer>
+      </div>
+    </Router>
   );
 }
 
