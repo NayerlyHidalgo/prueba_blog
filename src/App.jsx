@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Productos from "./pages/Productos";
+import NuevoProducto from "./pages/NuevoProducto";
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
@@ -60,7 +61,7 @@ function Home() {
       {/* Mensaje informativo */}
       <div className="w-full max-w-4xl">
         <div className="bg-fuchsia-900 text-fuchsia-100 rounded p-3 text-sm">
-          Mantenga el stock de los productos actualizado.
+          Recuerda: Mantén actualizado el stock de productos.
         </div>
       </div>
     </main>
@@ -77,7 +78,7 @@ function App() {
           <nav className="flex space-x-4 text-sm">
             <Link to="/" className="hover:underline">Home</Link>
             <Link to="/productos" className="hover:underline">Productos</Link>
-            <a href="#" className="hover:underline">Nuevo Producto</a>
+            <Link to="/nuevo-producto" className="hover:underline">Nuevo Producto</Link>
             <a href="#" className="hover:underline">Cálculos</a>
             <a href="#" className="hover:underline">Información</a>
           </nav>
@@ -86,6 +87,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/productos" element={<Productos />} />
+          <Route path="/nuevo-producto" element={<NuevoProducto />} />
         </Routes>
 
         {/* Footer */}

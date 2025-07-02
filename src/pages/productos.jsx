@@ -1,4 +1,8 @@
+import { useProductos } from "../context/ProductosContext";
+
 export default function Productos() {
+  const { productos } = useProductos();
+
   return (
     <div className="flex-1 flex flex-col items-center py-12 bg-black min-h-screen">
       <h1 className="text-5xl font-semibold mb-8 w-full max-w-6xl mx-auto text-white">Listado de Productos</h1>
@@ -14,18 +18,14 @@ export default function Productos() {
               </tr>
             </thead>
             <tbody>
-              <tr className="bg-black bg-opacity-60">
-                <td className="px-6 py-4 text-white border-t border-fuchsia-900">1</td>
-                <td className="px-6 py-4 text-white border-t border-fuchsia-900">Rascador</td>
-                <td className="px-6 py-4 text-white border-t border-fuchsia-900">50</td>
-                <td className="px-6 py-4 text-white border-t border-fuchsia-900">10</td>
-              </tr>
-              <tr className="bg-black bg-opacity-60">
-                <td className="px-6 py-4 text-white border-t border-fuchsia-900">2</td>
-                <td className="px-6 py-4 text-white border-t border-fuchsia-900">Arnes</td>
-                <td className="px-6 py-4 text-white border-t border-fuchsia-900">80</td>
-                <td className="px-6 py-4 text-white border-t border-fuchsia-900">5</td>
-              </tr>
+              {productos.map((p) => (
+                <tr key={p.id} className="bg-black bg-opacity-60">
+                  <td className="px-6 py-4 text-white border-t border-fuchsia-900">{p.id}</td>
+                  <td className="px-6 py-4 text-white border-t border-fuchsia-900">{p.nombre}</td>
+                  <td className="px-6 py-4 text-white border-t border-fuchsia-900">{p.precio}</td>
+                  <td className="px-6 py-4 text-white border-t border-fuchsia-900">{p.stock}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
