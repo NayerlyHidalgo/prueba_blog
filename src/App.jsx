@@ -3,6 +3,8 @@ import Productos from "./pages/Productos";
 import NuevoProducto from "./pages/NuevoProducto";
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import Calculos from "./pages/Calculos";
+import Informacion from "./pages/Informacion";
 
 // Página principal (Home)
 function Home() {
@@ -79,8 +81,8 @@ function App() {
             <Link to="/" className="hover:underline">Home</Link>
             <Link to="/productos" className="hover:underline">Productos</Link>
             <Link to="/nuevo-producto" className="hover:underline">Nuevo Producto</Link>
-            <a href="#" className="hover:underline">Cálculos</a>
-            <a href="#" className="hover:underline">Información</a>
+            <Link to="/calculos" className="hover:underline">Cálculos</Link>
+            <Link to="/informacion" className="hover:underline">Información</Link>
           </nav>
         </header>
 
@@ -88,6 +90,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/productos" element={<Productos />} />
           <Route path="/nuevo-producto" element={<NuevoProducto />} />
+          <Route path="/calculos" element={<Calculos />} />
+          <Route path="/informacion" element={<Informacion />} />
         </Routes>
 
         {/* Footer */}
