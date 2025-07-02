@@ -14,4 +14,9 @@ If you are developing a production application, we recommend using TypeScript wi
 =======
 # prueba_blog
 prueba de progra_ blog
+<<<<<<< HEAD
 >>>>>>> e51aae2ca11911297ea0cd09634dd1478cca5aca
+=======
+
+Este es mi README local.
+>>>>>>> e468a52e34fe99723bc8fed4e9fc4ea780bc2da9
